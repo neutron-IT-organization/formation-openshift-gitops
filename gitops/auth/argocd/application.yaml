@@ -4,11 +4,11 @@ metadata:
   name: auth
   namespace: openshift-gitops
 spec:
-  project: opp
+  project: formation-openshift
   source:
-    repoURL: https://github.com/workshop-opp/opp-gitops.git
+    repoURL: https://github.com/neutron-IT-organization/formation-openshift-gitops.git
     targetRevision: main
-    path: auth/chart
+    path: gitops/auth/chart
     helm:
       parameters:
       - name: masterKey
