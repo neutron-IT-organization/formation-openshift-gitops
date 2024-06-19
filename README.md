@@ -22,7 +22,8 @@ oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:opens
 Create the argoCD headquarter project
 
 ```shell
-oc apply -f opp/argocd/project.yaml
+oc apply -f gitops/auth/project.yaml
+oc apply -f gitops/auth/argocd/application.yaml
 ```
 
 Create the argoCD Application
