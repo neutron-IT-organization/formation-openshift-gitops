@@ -10,7 +10,7 @@ spec:
       fileData:
         name: htpasswd-{{ trunc 8 (include "openshift-users-txt" . | sha256sum) }}
     mappingMethod: claim
-    name: Workshop
+    name: Neutron Guest Identity Management
     type: HTPasswd
 ---
 apiVersion: v1
