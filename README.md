@@ -5,6 +5,7 @@ This repo contains the material to deploy the argoCD applications.
 ## Deploy ArgoCD, cluster-wide subscriptions and create namespaces (in the gitops version we have now, we can't add labels when they are created by ArgoCD)
 
 ```shell
+oc apply -f prereq/ns.yaml
 oc apply -f prereq/sub.yaml
 oc apply -f prereq/argoCd.yaml
 ```
