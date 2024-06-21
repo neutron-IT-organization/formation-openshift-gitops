@@ -2,164 +2,225 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: tokyo-ns
+  name: tokyo-user-ns
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: paris-ns
+  name: paris-user-ns
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: londres-ns
+  name: londres-user-ns
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: rome-ns
+  name: rome-user-ns
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: sydney-ns
+  name: sydney-user-ns
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: rio-ns
+  name: rio-user-ns
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: istanbul-ns
+  name: istanbul-user-ns
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: berlin-ns
+  name: berlin-user-ns
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: nairobi-ns
+  name: nairobi-user-ns
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: madrid-ns
+  name: madrid-user-ns
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: toronto-ns
+  name: toronto-user-ns
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: singapour-ns
+  name: singapour-user-ns
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: stockholm-ns
+  name: stockholm-user-ns
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: athene-ns
+  name: athenes-user-ns
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: varsovie-ns
+  name: varsovie-user-ns
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: oslo-ns
+  name: oslo-user-ns
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: helsinki-ns
+  name: helsinki-user-ns
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: lisbonne-ns
+  name: lisbonne-user-ns
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: vienne-ns
+  name: vienne-user-ns
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: brasilia-ns
+  name: brasilia-user-ns
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: canberra-ns
+  name: canberra-user-ns
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: ottawa-ns
+  name: ottawa-user-ns
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: seoul-ns
+  name: seoul-user-ns
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: cap-ns
+  name: cap-user-ns
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: budapest-ns
+  name: budapest-user-ns
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: dublin-ns
+  name: dublin-user-ns
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: zurich-ns
+  name: zurich-user-ns
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: cardiff-ns
+  name: cardiff-user-ns
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: nicosie-ns
+  name: nicosie-user-ns
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: sofia-ns
+  name: sofia-user-ns
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: suva-ns
+  name: suva-user-ns
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: riga-ns
+  name: riga-user-ns
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: vilnius-ns
+  name: vilnius-user-ns
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: alger-user-ns
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: abou-dabi-user-ns
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: bagdad-user-ns
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: bangkok-user-ns
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: le-caire-user-ns
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: freetown-user-ns
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kaboul-user-ns
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kinshasa-user-ns
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: libreville-user-ns
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: mexico-user-ns
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: reykjavik-user-ns
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: prague-user-ns
+

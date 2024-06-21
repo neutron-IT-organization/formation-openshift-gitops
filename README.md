@@ -36,7 +36,7 @@ oc apply -f opp/argocd/application.yaml
 
 ```shell
 oc delete -f opp/argocd/application.yaml
-oc delete -f gitops/sub.yaml
-oc delete -f gitops/ns.yaml
+oc delete -f prereq/sub.yaml
+oc delete -f prereq/ns.yaml
 ```
 
