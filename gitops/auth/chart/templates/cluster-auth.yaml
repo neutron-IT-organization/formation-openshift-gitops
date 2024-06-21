@@ -46,7 +46,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: {{ . | quote }}
-  namespace: {{ . | quote}}ns
+  namespace: {{ . | quote }}ns
   annotations:
     argocd.argoproj.io/sync-options: Prune=false
 rules:
