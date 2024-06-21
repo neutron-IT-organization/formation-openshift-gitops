@@ -30,7 +30,7 @@ data:
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: {{ . }}-self-provisioner
+  name: {{ . | quote}}-self-provisioner
   annotations:
     argocd.argoproj.io/sync-options: Prune=false
 subjects:
@@ -46,7 +46,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: {{ . | quote }}-role
-  namespace: {{ . }}-ns
+  namespace: {{ . | quote}}-ns
   annotations:
     argocd.argoproj.io/sync-options: Prune=false
 rules:
@@ -64,7 +64,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: {{ . | quote }}-rolebinding
-  namespace: {{ . }}-ns
+  namespace: {{ . | quote}}-ns
   annotations:
     argocd.argoproj.io/sync-options: Prune=false
 subjects:
