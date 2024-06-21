@@ -2,6 +2,11 @@
 apiVersion: v1
 kind: Namespace
 metadata:
+  name: admin-ns
+---
+apiVersion: v1
+kind: Namespace
+metadata:
   name: tokyo-user-ns
 ---
 apiVersion: v1
