@@ -30,15 +30,50 @@ data:
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: {{ . | quote }}
+  name: {{ . }}-self-provisioner
   annotations:
     argocd.argoproj.io/sync-options: Prune=false
 subjects:
   - kind: User
-    apiGroup: rbac.authorization.k8s.io
     name: {{ . | quote }}
+    apiGroup: rbac.authorization.k8s.io
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: cluster-admin
+  name: self-provisioner
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: {{ . | quote }}-role
+  namespace: {{ . }}-ns
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false
+rules:
+- apiGroups: [""]
+  resources: ["pods", "services", "deployments", "replicasets", "configmaps", "secrets"]
+  verbs: ["get", "list", "watch", "create", "update", "delete"]
+- apiGroups: ["apps"]
+  resources: ["deployments", "replicasets"]
+  verbs: ["get", "list", "watch", "create", "update", "delete"]
+- apiGroups: ["rbac.authorization.k8s.io"]
+  resources: ["rolebindings"]
+  verbs: ["get", "list", "watch", "create", "update", "delete"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ . | quote }}-rolebinding
+  namespace: {{ . }}-ns
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false
+subjects:
+  - kind: User
+    name: {{ . | quote }}
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: {{ . | quote }}-role
 {{ end -}}
+
