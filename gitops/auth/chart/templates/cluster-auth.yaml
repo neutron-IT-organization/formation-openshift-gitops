@@ -12,6 +12,14 @@ spec:
     mappingMethod: claim
     name: Neutron Guest Identity Management
     type: HTPasswd
+  - google:
+      clientID: 272141709376-irs72k4bgahanbp2c2fsvlhksqfirdm6.apps.googleusercontent.com
+      clientSecret:
+        name: google-client-secret-2r9ph
+      hostedDomain: neutron-it.fr
+    mappingMethod: claim
+    name: google
+    type: Google
 ---
 apiVersion: v1
 kind: Secret
