@@ -84,4 +84,20 @@ roleRef:
   kind: ClusterRole
   name: admin
 {{ end -}}
-
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ . | quote }}-l03p02
+  namespace: l03p02
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false
+subjects:
+  - kind: User
+    name: {{ . | quote }}
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: admin
+{{ end -}}
