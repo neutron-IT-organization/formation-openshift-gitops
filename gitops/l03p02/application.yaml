@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: l02p01
+  name: l03p02
   namespace: openshift-gitops
 spec:
   project: formation-openshift
   source:
     repoURL: https://github.com/neutron-IT-organization/formation-openshift-gitops.git
     targetRevision: main
-    path: gitops/l02p01/base
+    path: gitops/l03p02/base
   destination:
     server: https://kubernetes.default.svc
-    namespace: l02p01
+    namespace: l03p02
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
