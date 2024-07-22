@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: p02l03-app
+  name: l03p02-app
   labels:
-    app: p02l03-app
+    app: l03p02-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: p02l03-quarkus-aap
+      app: l03p02-quarkus-aap
   template:
     metadata:
       labels:
-        app: p02l03-quarkus-aap
+        app: l03p02-quarkus-aap
     spec:
       containers:
         - name: quarkus-container
