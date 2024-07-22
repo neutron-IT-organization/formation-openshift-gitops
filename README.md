@@ -19,18 +19,15 @@ oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:opens
 
 ## Configure the infrastructure for the workshop
 
-Create the argoCD headquarter project
+Create the argoCD authentication project
 
 ```shell
 oc apply -f gitops/project.yaml
 oc apply -f gitops/auth/argocd/application.yaml
 ```
 
-Create the argoCD Application
 
-```shell
-oc apply -f opp/argocd/application.yaml
-```
+
 
 ## Cleanup
 
