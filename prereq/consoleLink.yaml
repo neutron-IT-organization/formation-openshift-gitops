@@ -1,0 +1,11 @@
+apiVersion: console.openshift.io/v1
+kind: ConsoleLink
+metadata:
+  name: gitops-console-link
+spec:
+  applicationMenu:
+    imageURL: 'https://argocd-operator.readthedocs.io/en/stable/assets/logo.png'
+    section: gitops console link
+  href: 'https://argocd-server-openshift-gitops.apps.neutron-sno-office.intraneutron.fr'
+  location: ApplicationMenu
+  text: ArgoCD

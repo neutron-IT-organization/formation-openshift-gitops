@@ -8,13 +8,14 @@ This repo contains the material to deploy the argoCD applications.
 oc apply -f prereq/ns.yaml
 oc apply -f prereq/sub.yaml
 oc apply -f prereq/argoCd.yaml
+oc apply -f prereq/consoleLink.yaml
 ```
 
 ## OpenShift GitOps
 
 ```sh
 oc patch argocd openshift-gitops -n openshift-gitops -p '{"spec":{"server":{"insecure":true,"route":{"enabled": true,"tls":{"termination":"edge","insecureEdgeTerminationPolicy":"Redirect"}}}}}' --type=merge
-oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:openshift-gitops-operator:argocd-argocd-application-controller
+oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:openshift-gitops:argocd-argocd-application-controller
 ```
 
 ## Configure the infrastructure for the workshop
@@ -32,7 +33,7 @@ oc apply -f gitops/auth/argocd/application.yaml
 ## Cleanup
 
 ```shell
-oc delete -f opp/argocd/application.yaml
+oc delete -f gitops/auth/argocd/application.yaml
 oc delete -f prereq/sub.yaml
 oc delete -f prereq/ns.yaml
 ```
