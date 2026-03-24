@@ -13,6 +13,9 @@ spec:
     server: https://kubernetes.default.svc
     namespace: l03p02
   syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
     syncOptions:
     - CreateNamespace=true
     managedNamespaceMetadata:
