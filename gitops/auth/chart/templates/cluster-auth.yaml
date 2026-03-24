@@ -8,7 +8,7 @@ spec:
   identityProviders:
   - htpasswd:
       fileData:
-        name: htpasswd-{{ trunc 8 (include "openshift-users-txt" . | sha256sum) }}
+        name: htpasswd-formation
     mappingMethod: claim
     name: Neutron Guest Identity Management
     type: HTPasswd
@@ -24,7 +24,7 @@ spec:
 apiVersion: v1
 kind: Secret
 metadata:
-  name: htpasswd-{{ trunc 8 (include "openshift-users-txt" . | sha256sum) }}
+  name: htpasswd-formation
   namespace: openshift-config
   annotations:
     argocd.argoproj.io/sync-options: Prune=false
@@ -33,70 +33,154 @@ type: Opaque
 data:
   htpasswd: {{ include "openshift-htpasswd" . | b64enc | quote }}
   users.txt: {{ include "openshift-users-txt" . | b64enc | quote }}
-{{- range (include "openshift-users" . | fromJsonArray) }}
+{{- range $user := .Values.openshift.users }}
+{{- $username := printf "%s-user" $user }}
+{{- $namespace := printf "%s-user-ns" $user }}
 ---
+# ============================================================
+# Configuration pour l'utilisateur {{ $username }}
+# Namespace: {{ $namespace }}
+# ============================================================
+
+# ClusterRoleBinding: permet à l'utilisateur de créer ses propres projets
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: {{ . | quote }}
+  name: {{ $username }}-self-provisioner
   annotations:
     argocd.argoproj.io/sync-options: Prune=false
 subjects:
   - kind: User
-    name: {{ . | quote }}
+    name: {{ $username | quote }}
     apiGroup: rbac.authorization.k8s.io
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
   name: self-provisioner
 ---
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  name: {{ . | quote }}
-  namespace: {{ . }}-ns
-  annotations:
-    argocd.argoproj.io/sync-options: Prune=false
-rules:
-- apiGroups: [""]
-  resources: ["pods", "services", "deployments", "replicasets", "configmaps", "secrets"]
-  verbs: ["get", "list", "watch", "create", "update", "delete"]
-- apiGroups: ["apps"]
-  resources: ["deployments", "replicasets"]
-  verbs: ["get", "list", "watch", "create", "update", "delete"]
-- apiGroups: ["rbac.authorization.k8s.io"]
-  resources: ["rolebindings"]
-  verbs: ["get", "list", "watch", "create", "update", "delete"]
----
+# RoleBinding: l'utilisateur est admin de son namespace
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: {{ . | quote }}
-  namespace: {{ . }}-ns
+  name: {{ $username }}-admin
+  namespace: {{ $namespace }}
   annotations:
     argocd.argoproj.io/sync-options: Prune=false
 subjects:
   - kind: User
-    name: {{ . | quote }}
+    name: {{ $username | quote }}
     apiGroup: rbac.authorization.k8s.io
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
   name: admin
 ---
+# RoleBinding: accès en lecture au namespace partagé l03p02 (exercice 2.2)
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: {{ . }}-l03p02
+  name: {{ $username }}-l03p02-view
   namespace: l03p02
   annotations:
     argocd.argoproj.io/sync-options: Prune=false
 subjects:
   - kind: User
-    name: {{ . | quote }}
+    name: {{ $username | quote }}
     apiGroup: rbac.authorization.k8s.io
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: admin
-{{ end -}}
+  name: view
+---
+# ResourceQuota: limite les ressources consommées dans le namespace
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: formation-quota
+  namespace: {{ $namespace }}
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false
+spec:
+  hard:
+    requests.cpu: {{ $.Values.openshift.namespace.quota.requestsCpu | quote }}
+    requests.memory: {{ $.Values.openshift.namespace.quota.requestsMemory | quote }}
+    limits.cpu: {{ $.Values.openshift.namespace.quota.limitsCpu | quote }}
+    limits.memory: {{ $.Values.openshift.namespace.quota.limitsMemory | quote }}
+    pods: {{ $.Values.openshift.namespace.quota.pods | quote }}
+    services: {{ $.Values.openshift.namespace.quota.services | quote }}
+    persistentvolumeclaims: {{ $.Values.openshift.namespace.quota.persistentvolumeclaims | quote }}
+    requests.storage: {{ $.Values.openshift.namespace.quota.requestsStorage | quote }}
+---
+# LimitRange: valeurs par défaut de resources pour les conteneurs
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: formation-limits
+  namespace: {{ $namespace }}
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false
+spec:
+  limits:
+  - type: Container
+    default:
+      cpu: {{ $.Values.openshift.namespace.limitrange.defaultCpu | quote }}
+      memory: {{ $.Values.openshift.namespace.limitrange.defaultMemory | quote }}
+    defaultRequest:
+      cpu: {{ $.Values.openshift.namespace.limitrange.defaultRequestCpu | quote }}
+      memory: {{ $.Values.openshift.namespace.limitrange.defaultRequestMemory | quote }}
+    max:
+      cpu: {{ $.Values.openshift.namespace.limitrange.maxCpu | quote }}
+      memory: {{ $.Values.openshift.namespace.limitrange.maxMemory | quote }}
+---
+# NetworkPolicy: autoriser le trafic dans le même namespace
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-same-namespace
+  namespace: {{ $namespace }}
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false
+spec:
+  podSelector: {}
+  ingress:
+  - from:
+    - podSelector: {}
+  policyTypes:
+  - Ingress
+---
+# NetworkPolicy: autoriser le trafic depuis l'ingress controller OpenShift (Routes)
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-from-openshift-ingress
+  namespace: {{ $namespace }}
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false
+spec:
+  podSelector: {}
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          network.openshift.io/policy-group: ingress
+  policyTypes:
+  - Ingress
+---
+# NetworkPolicy: autoriser le trafic depuis le monitoring OpenShift
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-from-openshift-monitoring
+  namespace: {{ $namespace }}
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false
+spec:
+  podSelector: {}
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          network.openshift.io/policy-group: monitoring
+  policyTypes:
+  - Ingress
+{{- end }}

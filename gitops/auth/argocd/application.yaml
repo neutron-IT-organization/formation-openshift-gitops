@@ -11,11 +11,14 @@ spec:
     path: gitops/auth/chart
     helm:
       parameters:
-      - name: masterKey
-        value: my-secret-value
+      - name: openshift.defaultPassword
+        value: "OpenShift4formation!"
   destination:
     server: https://kubernetes.default.svc
   syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
     syncOptions:
     - CreateNamespace=false
     managedNamespaceMetadata:

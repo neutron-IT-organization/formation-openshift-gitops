@@ -1,4 +1,8 @@
 openshift:
+  # Mot de passe commun pour tous les utilisateurs de la formation
+  # IMPORTANT: Changez ce mot de passe avant la formation !
+  defaultPassword: "OpenShift4formation!"
+
   users:
   - tokyo
   - paris
@@ -45,3 +49,22 @@ openshift:
   - mexico
   - reykjavik
   - prague
+
+  # Quotas appliqués à chaque namespace étudiant
+  namespace:
+    quota:
+      requestsCpu: "4"
+      requestsMemory: "4Gi"
+      limitsCpu: "8"
+      limitsMemory: "8Gi"
+      pods: "20"
+      services: "10"
+      persistentvolumeclaims: "5"
+      requestsStorage: "20Gi"
+    limitrange:
+      defaultCpu: "500m"
+      defaultMemory: "512Mi"
+      defaultRequestCpu: "100m"
+      defaultRequestMemory: "128Mi"
+      maxCpu: "2"
+      maxMemory: "2Gi"
