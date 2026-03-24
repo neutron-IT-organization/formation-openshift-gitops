@@ -62,9 +62,9 @@ openshift:
       persistentvolumeclaims: "5"
       requestsStorage: "20Gi"
     limitrange:
-      defaultCpu: "500m"
-      defaultMemory: "512Mi"
-      defaultRequestCpu: "100m"
-      defaultRequestMemory: "128Mi"
+      defaultCpu: "250m"
+      defaultMemory: "256Mi"
+      defaultRequestCpu: "50m"
+      defaultRequestMemory: "64Mi"
       maxCpu: "2"
       maxMemory: "2Gi"
