@@ -34,22 +34,6 @@ data:
 # Namespace: {{ $namespace }}
 # ============================================================
 
-# ClusterRoleBinding: permet à l'utilisateur de créer ses propres projets
-kind: ClusterRoleBinding
-apiVersion: rbac.authorization.k8s.io/v1
-metadata:
-  name: {{ $username }}-self-provisioner
-  annotations:
-    argocd.argoproj.io/sync-options: Prune=false
-subjects:
-  - kind: User
-    name: {{ $username | quote }}
-    apiGroup: rbac.authorization.k8s.io
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: self-provisioner
----
 # RoleBinding: l'utilisateur est admin de son namespace
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -67,12 +51,12 @@ roleRef:
   kind: ClusterRole
   name: admin
 ---
-# RoleBinding: accès en lecture au namespace partagé l03p02 (exercice 2.2)
+# RoleBinding: accès en lecture au namespace partagé shared-workloads (exercice 2.2)
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: {{ $username }}-l03p02-view
-  namespace: l03p02
+  name: {{ $username }}-shared-workloads-view
+  namespace: shared-workloads
   annotations:
     argocd.argoproj.io/sync-options: Prune=false
 subjects:

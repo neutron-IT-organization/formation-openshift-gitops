@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: l03p02
+  name: shared-workloads
   namespace: openshift-gitops
 spec:
   project: formation-openshift
@@ -11,7 +11,7 @@ spec:
     path: gitops/l03p02/base
   destination:
     server: https://kubernetes.default.svc
-    namespace: l03p02
+    namespace: shared-workloads
   syncPolicy:
     automated:
       prune: true
