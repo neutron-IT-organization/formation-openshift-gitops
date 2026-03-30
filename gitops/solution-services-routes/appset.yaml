@@ -1,0 +1,72 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: solution-services-routes
+  namespace: openshift-gitops
+spec:
+  generators:
+  - list:
+      elements:
+      - city: tokyo
+      - city: paris
+      - city: londres
+      - city: rome
+      - city: sydney
+      - city: rio
+      - city: istanbul
+      - city: berlin
+      - city: nairobi
+      - city: madrid
+      - city: toronto
+      - city: singapour
+      - city: stockholm
+      - city: athenes
+      - city: varsovie
+      - city: oslo
+      - city: helsinki
+      - city: lisbonne
+      - city: vienne
+      - city: brasilia
+      - city: canberra
+      - city: ottawa
+      - city: seoul
+      - city: cap
+      - city: budapest
+      - city: dublin
+      - city: zurich
+      - city: cardiff
+      - city: nicosie
+      - city: sofia
+      - city: suva
+      - city: riga
+      - city: vilnius
+      - city: alger
+      - city: abou-dabi
+      - city: bagdad
+      - city: bangkok
+      - city: le-caire
+      - city: freetown
+      - city: kaboul
+      - city: kinshasa
+      - city: libreville
+      - city: mexico
+      - city: reykjavik
+      - city: prague
+  template:
+    metadata:
+      name: 'solution-services-routes-{{city}}'
+    spec:
+      project: formation-openshift
+      source:
+        repoURL: https://github.com/neutron-IT-organization/formation-openshift-gitops.git
+        targetRevision: main
+        path: gitops/solution-services-routes/base
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{city}}-user-ns'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=false

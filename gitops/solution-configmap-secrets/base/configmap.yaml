@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: welcome-app-config
+data:
+  APP_COLOR: "#4287f5"
+  WELCOME_MESSAGE: "Bienvenue sur Welcome App — OpenShift Formation"
+  LOG_LEVEL: "info"
