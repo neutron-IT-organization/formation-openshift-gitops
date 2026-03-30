@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rahoot
+  namespace: rahoot
+  labels:
+    app: rahoot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rahoot
+  template:
+    metadata:
+      labels:
+        app: rahoot
+    spec:
+      serviceAccountName: rahoot
+      volumes:
+        - name: game-config
+          configMap:
+            name: rahoot-game-config
+        - name: quiz-config
+          configMap:
+            name: rahoot-quiz-config
+      containers:
+        - name: rahoot
+          image: ralex91/rahoot:latest
+          ports:
+            - containerPort: 3000
+          volumeMounts:
+            - name: game-config
+              mountPath: /app/config/game.json
+              subPath: game.json
+            - name: quiz-config
+              mountPath: /app/config/quizz
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"

@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rahoot-game-config
+  namespace: rahoot
+data:
+  game.json: |
+    {
+      "managerPassword": "formation-openshift"
+    }

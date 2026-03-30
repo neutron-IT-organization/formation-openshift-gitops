@@ -1,0 +1,15 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: rahoot
+  namespace: rahoot
+spec:
+  host: rahoot.apps.neutron-sno-office.neutron-it.fr
+  to:
+    kind: Service
+    name: rahoot
+  port:
+    targetPort: 3000
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect

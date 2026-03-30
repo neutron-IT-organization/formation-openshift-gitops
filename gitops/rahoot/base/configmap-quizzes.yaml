@@ -1,0 +1,316 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rahoot-quiz-config
+  namespace: rahoot
+data:
+  presentation-openshift.json: |
+    {
+      "subject": "Présentation d'OpenShift",
+      "questions": [
+        {
+          "question": "OpenShift Container Platform est basé sur quel orchestrateur open source ?",
+          "answers": ["Docker Swarm", "Kubernetes", "Apache Mesos", "HashiCorp Nomad"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Quelle est la principale différence entre un conteneur et une machine virtuelle ?",
+          "answers": ["Un conteneur partage le noyau de l'OS hôte", "Une VM est plus légère et plus rapide", "Un conteneur a son propre noyau dédié", "Il n'y a aucune différence technique"],
+          "solution": 0,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Quel outil en ligne de commande est spécifique à OpenShift (en plus de kubectl) ?",
+          "answers": ["helm", "oc", "kubectl", "k9s"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 15
+        },
+        {
+          "question": "Kubernetes a été initialement développé par quelle entreprise ?",
+          "answers": ["Microsoft", "Amazon Web Services", "Google", "Red Hat"],
+          "solution": 2,
+          "cooldown": 5,
+          "time": 15
+        },
+        {
+          "question": "Quel composant OpenShift permet d'exposer une application HTTP/HTTPS depuis l'extérieur du cluster ?",
+          "answers": ["Service ClusterIP", "Ingress Controller", "Route", "NetworkPolicy"],
+          "solution": 2,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Dans OpenShift, qu'est-ce qu'un Project ?",
+          "answers": ["Un dépôt de code source Git", "Un namespace Kubernetes avec des fonctionnalités supplémentaires", "Un type de conteneur spécifique", "Une image Docker préconfigurée"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Quel registre d'images est intégré nativement dans OpenShift ?",
+          "answers": ["Docker Hub", "Quay.io externe", "Internal Registry (image-registry.openshift-image-registry)", "Harbor"],
+          "solution": 2,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Quelle commande permet de connaître l'utilisateur actuellement connecté à OpenShift ?",
+          "answers": ["oc status", "oc whoami", "oc get user", "oc id"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 15
+        }
+      ]
+    }
+  architecture-openshift.json: |
+    {
+      "subject": "Architecture OpenShift et Kubernetes",
+      "questions": [
+        {
+          "question": "Quel composant du control plane stocke l'état complet du cluster Kubernetes ?",
+          "answers": ["kube-apiserver", "kube-scheduler", "etcd", "kube-controller-manager"],
+          "solution": 2,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Quel est le rôle principal du kube-scheduler ?",
+          "answers": ["Stocker les secrets et ConfigMaps", "Assigner les pods aux nœuds disponibles", "Gérer les certificats TLS", "Surveiller les métriques du cluster"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Quel runtime de conteneurs est utilisé par défaut dans OpenShift 4 ?",
+          "answers": ["Docker", "containerd", "CRI-O", "runc seul"],
+          "solution": 2,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Le kubelet est un agent qui s'exécute sur...",
+          "answers": ["Uniquement les nœuds masters", "Uniquement les nœuds workers", "Tous les nœuds (masters et workers)", "Sur le control plane virtuel uniquement"],
+          "solution": 2,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Qu'est-ce que le CRI (Container Runtime Interface) ?",
+          "answers": ["Un protocole réseau pour les conteneurs", "L'interface standardisée entre Kubernetes et le runtime de conteneurs", "Un type de stockage persistant", "Un outil de monitoring des conteneurs"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Dans OpenShift 4, la méthode IPI (Installer Provisioned Infrastructure) signifie que...",
+          "answers": ["L'infrastructure est provisionnée manuellement avant l'installation", "L'installateur provisionne automatiquement l'infrastructure cloud", "L'infrastructure est gérée par un opérateur externe", "L'installation se fait uniquement en bare-metal"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Qu'est-ce qu'un Operator dans OpenShift ?",
+          "answers": ["Un administrateur humain du cluster", "Une application qui automatise la gestion d'une autre application via des CRDs", "Un type de pod système", "Un plugin réseau"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Le kube-controller-manager est responsable de...",
+          "answers": ["Traiter les requêtes API REST", "Exécuter les boucles de contrôle (reconciliation loops)", "Allouer le stockage persistent", "Authentifier les utilisateurs"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 20
+        }
+      ]
+    }
+  workloads-openshift.json: |
+    {
+      "subject": "Les Workloads dans OpenShift",
+      "questions": [
+        {
+          "question": "Quelle ressource Kubernetes assure qu'un nombre défini de pods est toujours en cours d'exécution ?",
+          "answers": ["Pod seul", "DaemonSet", "Deployment (via ReplicaSet)", "Job"],
+          "solution": 2,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Un DaemonSet garantit que...",
+          "answers": ["Exactement 3 pods s'exécutent dans le cluster", "Au moins 2 réplicas sont disponibles", "Un pod et un seul s'exécute sur chaque nœud éligible", "Les pods redémarrent automatiquement toutes les heures"],
+          "solution": 2,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Quel type de Workload est le plus adapté pour déployer une base de données avec stockage persistant ?",
+          "answers": ["Deployment", "DaemonSet", "StatefulSet", "CronJob"],
+          "solution": 2,
+          "cooldown": 5,
+          "time": 15
+        },
+        {
+          "question": "Les pods d'un StatefulSet ont des noms...",
+          "answers": ["Complètement aléatoires", "Séquentiels et stables (ex: db-0, db-1, db-2)", "Identiques à ceux du Deployment", "Basés sur l'adresse IP du nœud"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Quelle ressource est utilisée pour exécuter une tâche ponctuelle (batch) jusqu'à sa complétion ?",
+          "answers": ["Deployment", "DaemonSet", "StatefulSet", "Job"],
+          "solution": 3,
+          "cooldown": 5,
+          "time": 15
+        },
+        {
+          "question": "La stratégie de déploiement RollingUpdate consiste à...",
+          "answers": ["Arrêter tous les pods avant d'en créer de nouveaux", "Remplacer progressivement les anciens pods par les nouveaux", "Dupliquer tous les pods simultanément", "Annuler automatiquement le déploiement en cas d'erreur"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Qu'est-ce qu'un label dans Kubernetes ?",
+          "answers": ["Un secret chiffré attaché à un pod", "Une paire clé/valeur utilisée pour identifier et sélectionner des ressources", "Une règle de quotas de ressources", "Un certificat TLS associé à une Route"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 15
+        },
+        {
+          "question": "Quelle commande permet de scaler un Deployment à 5 réplicas ?",
+          "answers": ["oc resize deployment mon-app --count=5", "oc scale deployment mon-app --replicas=5", "oc set replicas deployment/mon-app 5", "oc update deployment mon-app replicas=5"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 20
+        }
+      ]
+    }
+  reseaux-openshift.json: |
+    {
+      "subject": "Les réseaux dans OpenShift",
+      "questions": [
+        {
+          "question": "Quel plugin CNI est utilisé par défaut dans OpenShift 4 ?",
+          "answers": ["Calico", "Flannel", "OVN-Kubernetes", "Weave Net"],
+          "solution": 2,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Un Service de type ClusterIP est accessible depuis...",
+          "answers": ["Internet, sans restriction", "L'intérieur du cluster uniquement", "Tous les nœuds via un port fixe exposé", "Un Load Balancer cloud externe"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Un Service NodePort expose l'application sur...",
+          "answers": ["Une IP virtuelle interne au cluster", "Un port fixe (30000-32767) sur tous les nœuds du cluster", "Un nom DNS public automatique", "La Route OpenShift uniquement"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Quelle terminaison TLS dans une Route OpenShift déchiffre le trafic au niveau du routeur (HAProxy) ?",
+          "answers": ["Passthrough (le trafic chiffré va jusqu'au pod)", "Reencrypt (re-chiffrement vers le pod)", "Edge (déchiffrement au routeur, HTTP vers le pod)", "NodePort TLS"],
+          "solution": 2,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Le DNS interne de Kubernetes résout les Services sous quel format complet ?",
+          "answers": ["<service>.<namespace>", "<service>.<namespace>.svc.cluster.local", "<namespace>/<service>.local", "<service>.k8s.cluster"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Qu'est-ce qu'une NetworkPolicy dans Kubernetes ?",
+          "answers": ["Une règle de routage BGP", "Une politique de pare-feu au niveau des pods définissant les flux réseau autorisés", "Un type de Service externe", "Un certificat TLS pour les Routes"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Quelle commande crée une Route HTTP depuis un Service existant ?",
+          "answers": ["oc create route mon-service", "oc expose service mon-service", "oc publish service mon-service", "oc route add mon-service"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 15
+        },
+        {
+          "question": "Le CNI (Container Network Interface) est responsable de...",
+          "answers": ["Gérer les volumes persistants", "Attribuer des adresses IP aux pods et configurer leur réseau", "Authentifier les utilisateurs du cluster", "Surveiller les performances réseau"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 20
+        }
+      ]
+    }
+  administration-openshift.json: |
+    {
+      "subject": "Gestion et administration du cluster",
+      "questions": [
+        {
+          "question": "RBAC signifie...",
+          "answers": ["Role Based Access Control", "Resource Based Application Configuration", "Role Based Application Control", "Remote Backend Access Control"],
+          "solution": 0,
+          "cooldown": 5,
+          "time": 15
+        },
+        {
+          "question": "Quelle est la différence entre un Role et un ClusterRole dans Kubernetes ?",
+          "answers": ["Aucune différence fonctionnelle", "Un Role est limité à un namespace, un ClusterRole est global au cluster", "Un ClusterRole est moins puissant qu'un Role", "Un Role s'applique automatiquement à tous les namespaces"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Un MachineSet dans OpenShift contrôle...",
+          "answers": ["Les quotas de ressources par namespace", "Le cycle de vie des nœuds workers (création/suppression de VMs)", "Les certificats TLS du cluster", "Les politiques réseau inter-pods"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Quelle ressource OpenShift gère la configuration OS au niveau des nœuds (kubelet, sysctl, fichiers) ?",
+          "answers": ["MachineSet", "MachineConfig", "NodeConfig", "DaemonSet système"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Prometheus dans la stack de monitoring OpenShift est utilisé pour...",
+          "answers": ["Gérer les utilisateurs et leurs droits", "Collecter, stocker et requêter des métriques de séries temporelles", "Déployer des applications depuis des images", "Configurer les interfaces réseau"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 15
+        },
+        {
+          "question": "Comment déclencher manuellement une mise à jour du cluster OpenShift vers une version spécifique ?",
+          "answers": ["oc update cluster --to=4.14.5", "oc adm upgrade --to=4.14.5", "oc patch clusterversion --version=4.14.5", "oc apply -f update.yaml"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Qu'est-ce qu'un RoleBinding dans Kubernetes ?",
+          "answers": ["Une règle de pare-feu réseau", "Un lien entre un sujet (user/group/ServiceAccount) et un Role ou ClusterRole", "Un type de déploiement avancé", "Une configuration de stockage persistant"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Quelle commande affiche l'état des Cluster Operators dans OpenShift ?",
+          "answers": ["oc get operators", "oc get clusteroperators", "oc describe operators", "oc status operators"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 15
+        }
+      ]
+    }

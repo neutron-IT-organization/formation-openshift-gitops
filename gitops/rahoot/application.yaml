@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rahoot
+  namespace: openshift-gitops
+spec:
+  project: formation-openshift
+  source:
+    repoURL: https://github.com/neutron-IT-organization/formation-openshift-gitops.git
+    targetRevision: main
+    path: gitops/rahoot/base
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: rahoot
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
