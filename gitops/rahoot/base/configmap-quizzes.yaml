@@ -37,13 +37,6 @@ data:
           "time": 20
         },
         {
-          "question": "Quelle technologie OpenShift permet de créer une application directement depuis Git sans écrire de Dockerfile ?",
-          "answers": ["Source-to-Image (S2I)", "Copy-Paste", "GitHub Actions", "FTP"],
-          "solution": 0,
-          "cooldown": 5,
-          "time": 20
-        },
-        {
           "question": "Un conteneur démarre-t-il plus vite qu'une machine virtuelle ?",
           "answers": ["Non, c'est pareil", "Oui, en quelques secondes", "Non, c'est beaucoup plus lent", "Seulement sur OpenShift"],
           "solution": 1,
