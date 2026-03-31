@@ -79,8 +79,8 @@ data:
         },
         {
           "question": "Quel composant choisit sur quel serveur un pod doit être placé ?",
-          "answers": ["Le comptable", "Le scheduler (kube-scheduler)", "Le navigateur web", "Le pare-feu"],
-          "solution": 1,
+          "answers": ["le scheduler", "l'etcd", "le container-manager", "le kubelet"],
+          "solution": 0,
           "cooldown": 5,
           "time": 20
         },
