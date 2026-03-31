@@ -14,57 +14,22 @@ openshift:
   - berlin
   - nairobi
   - madrid
-  - toronto
-  - singapour
-  - stockholm
-  - athenes
-  - varsovie
-  - oslo
-  - helsinki
-  - lisbonne
-  - vienne
-  - brasilia
-  - canberra
-  - ottawa
-  - seoul
-  - cap
-  - budapest
-  - dublin
-  - zurich
-  - cardiff
-  - nicosie
-  - sofia
-  - suva
-  - riga
-  - vilnius
-  - alger
-  - abou-dabi
-  - bagdad
-  - bangkok
-  - le-caire
-  - freetown
-  - kaboul
-  - kinshasa
-  - libreville
-  - mexico
-  - reykjavik
-  - prague
 
   # Quotas appliqués à chaque namespace étudiant
   namespace:
     quota:
-      requestsCpu: "0.2"
-      requestsMemory: "512Mi"
-      limitsCpu: "0.5"
-      limitsMemory: "1Gi"
+      requestsCpu: "0.1"
+      requestsMemory: "256Mi"
+      limitsCpu: "0.3"
+      limitsMemory: "512Mi"
       pods: "10"
       services: "10"
       persistentvolumeclaims: "5"
-      requestsStorage: "20Gi"
+      requestsStorage: "10Gi"
     limitrange:
-      defaultCpu: "50m"
-      defaultMemory: "64Mi"
+      defaultCpu: "20m"
+      defaultMemory: "32Mi"
       defaultRequestCpu: "1m"
-      defaultRequestMemory: "16Mi"
-      maxCpu: "2"
-      maxMemory: "2Gi"
+      defaultRequestMemory: "8Mi"
+      maxCpu: "1"
+      maxMemory: "1Gi"
