@@ -9,57 +9,57 @@ data:
       "subject": "Présentation d'OpenShift",
       "questions": [
         {
-          "question": "D'après le cours, quels sont les deux mécanismes Linux qui permettent l'isolation des processus dans un conteneur ?",
-          "answers": ["SELinux et AppArmor", "Namespaces et cgroups", "iptables et firewalld", "chroot et virtualisation"],
+          "question": "D'après le cours, qu'est-ce qu'un conteneur ?",
+          "answers": ["Une grosse machine virtuelle", "Une unité légère contenant l'application et ses dépendances", "Un serveur physique", "Un simple fichier texte"],
           "solution": 1,
           "cooldown": 5,
           "time": 20
         },
         {
-          "question": "Sur quel système interne de Google Kubernetes s'est-il basé à l'origine ?",
-          "answers": ["MapReduce", "Borg", "Chubby", "Google Cloud"],
+          "question": "OpenShift est une plateforme basée sur quel orchestrateur open source ?",
+          "answers": ["Docker", "Kubernetes", "Linux", "Windows"],
           "solution": 1,
           "cooldown": 5,
           "time": 20
         },
         {
-          "question": "Quel standard (OCI) définit le format portable des images de conteneurs ?",
-          "answers": ["Open Container Initiative", "Cloud Native Foundation", "Docker Standard Format", "Kubernetes Image Spec"],
+          "question": "Quel est l'avantage principal de la portabilité des conteneurs ?",
+          "answers": ["Ils sont gratuits", "Ils fonctionnent de la même manière partout (laptop, cloud, prod)", "Ils n'ont pas besoin d'internet", "Ils sont plus jolis"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Sur OpenShift, par défaut, un conteneur peut-il s'exécuter avec les droits 'root' (administrateur) ?",
+          "answers": ["Oui, toujours", "Non, c'est interdit par défaut pour la sécurité", "Seulement le lundi", "Seulement si on utilise Docker"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Quelle technologie OpenShift permet de créer une application directement depuis Git sans écrire de Dockerfile ?",
+          "answers": ["Source-to-Image (S2I)", "Copy-Paste", "GitHub Actions", "FTP"],
           "solution": 0,
           "cooldown": 5,
           "time": 20
         },
         {
-          "question": "Quelle ressource spécifique à OpenShift permet de contrôler finement les permissions de sécurité des pods (comme interdire root) ?",
-          "answers": ["NetworkPolicy", "SecurityContextConstraints (SCC)", "Pod Security Admission", "SELinux Labels"],
+          "question": "Un conteneur démarre-t-il plus vite qu'une machine virtuelle ?",
+          "answers": ["Non, c'est pareil", "Oui, en quelques secondes", "Non, c'est beaucoup plus lent", "Seulement sur OpenShift"],
           "solution": 1,
           "cooldown": 5,
           "time": 20
         },
         {
-          "question": "Comment s'appelle la technologie OpenShift qui transforme directement un dépôt Git en image sans Dockerfile ?",
-          "answers": ["Tekton", "Source-to-Image (S2I)", "ArgoCD", "Buildah"],
-          "solution": 1,
+          "question": "Quelle entreprise développe et supporte la plateforme OpenShift ?",
+          "answers": ["Microsoft", "Google", "Red Hat", "Amazon"],
+          "solution": 2,
           "cooldown": 5,
           "time": 20
         },
         {
-          "question": "Quelle est la principale différence entre une Route OpenShift et un Ingress Kubernetes ?",
-          "answers": ["Les Routes supportent uniquement HTTP", "Les Routes offrent des options TLS avancées (Edge, Passthrough, Reencrypt)", "Les Ingress sont plus rapides", "Il n'y a aucune différence"],
-          "solution": 1,
-          "cooldown": 5,
-          "time": 20
-        },
-        {
-          "question": "Le cours indique qu'on peut faire tourner beaucoup plus de conteneurs que de VMs sur un hôte. Quel est l'ordre de grandeur ?",
-          "answers": ["Le même nombre", "Centaines de conteneurs vs dizaines de VMs", "10 conteneurs maximum", "Moins de conteneurs car ils partagent le noyau"],
-          "solution": 1,
-          "cooldown": 5,
-          "time": 20
-        },
-        {
-          "question": "Sur OpenShift, qu'arrive-t-il par défaut à un conteneur qui tente de s'exécuter en tant qu'utilisateur root ?",
-          "answers": ["Il fonctionne normalement", "Il est rejeté par défaut pour des raisons de sécurité", "Il démarre en mode dégradé", "Il est automatiquement converti"],
+          "question": "D'après le cours, que se passe-t-il si un programme tourne dans un conteneur et qu'il plante ?",
+          "answers": ["Tout le serveur s'arrête", "Seul le conteneur est affecté sans toucher aux autres", "Il faut racheter un serveur", "OpenShift s'éteint"],
           "solution": 1,
           "cooldown": 5,
           "time": 20
@@ -71,57 +71,57 @@ data:
       "subject": "Architecture OpenShift et Kubernetes",
       "questions": [
         {
-          "question": "Quel algorithme de consensus est utilisé par etcd pour garantir la cohérence des données ?",
-          "answers": ["Paxos", "Raft", "Zab", "Bitcoin"],
+          "question": "Comment appelle-t-on le 'cerveau' du cluster qui prend toutes les décisions ?",
+          "answers": ["Le Plan de contrôle (Control Plane)", "Le disque dur", "Le câble réseau", "L'écran de l'administrateur"],
+          "solution": 0,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Où OpenShift stocke-t-il toutes les informations et la configuration du cluster ?",
+          "answers": ["Dans un fichier Excel", "Dans la base de données etcd", "Sur une clé USB", "Dans le cloud Google"],
           "solution": 1,
           "cooldown": 5,
           "time": 20
         },
         {
-          "question": "En combien d'étapes (dites dans le cours) le kube-scheduler choisit-il le nœud pour un pod ?",
-          "answers": ["1 (direct)", "2 (filtrage et scoring)", "3 (filtrage, scoring et assignation)", "4 (audit complet)"],
-          "solution": 2,
-          "cooldown": 5,
-          "time": 20
-        },
-        {
-          "question": "Quel opérateur OpenShift est responsable des mises à jour globales de la plateforme ?",
-          "answers": ["Machine Config Operator", "Cluster Version Operator (CVO)", "Network Operator", "Monitoring Operator"],
+          "question": "Quel composant choisit sur quel serveur un pod doit être placé ?",
+          "answers": ["Le comptable", "Le scheduler (kube-scheduler)", "Le navigateur web", "Le pare-feu"],
           "solution": 1,
           "cooldown": 5,
           "time": 20
         },
         {
-          "question": "Quelle caractéristique majeure distingue l'OS RHCOS (CoreOS) d'un Linux classique ?",
-          "answers": ["Il utilise Docker", "Son système de fichiers root est en lecture seule (immuable)", "Il ne supporte pas SSH", "Il est plus lourd"],
+          "question": "Comment appelle-t-on les serveurs qui font tourner les applications des utilisateurs ?",
+          "answers": ["Les nœuds de contrôle", "Les nœuds de calcul (Workers)", "Les routeurs", "Les clients"],
           "solution": 1,
           "cooldown": 5,
           "time": 20
         },
         {
-          "question": "Quelle commande 'oc' permet d'ouvrir un shell de débogage sur un nœud sans utiliser SSH ?",
-          "answers": ["oc rsh node", "oc debug node/<nom>", "oc exec -it node", "oc login node"],
+          "question": "Quel agent tourne sur CHAQUE nœud pour surveiller et lancer les pods ?",
+          "answers": ["L'antivirus", "Le kubelet", "Le plugin Flash", "Le BIOS"],
           "solution": 1,
           "cooldown": 5,
           "time": 20
         },
         {
-          "question": "Lors d'une modification de configuration via MCO, comment les nœuds sont-ils redémarrés ?",
-          "answers": ["Tous en même temps", "Un par un, de manière contrôlée", "Aucun redémarrage n'est nécessaire", "Uniquement la nuit"],
+          "question": "D'après le cours, que fait OpenShift si un serveur (nœud) tombe en panne ?",
+          "answers": ["Il attend que l'humain répare", "Il déplace et redémarre automatiquement les applications sur un autre nœud fonctionnel", "Il supprime toutes les données", "Il arrête le cluster entier"],
           "solution": 1,
           "cooldown": 5,
           "time": 20
         },
         {
-          "question": "Quel mode d'installation est requis pour le bare-metal ou les réseaux très contraints ?",
-          "answers": ["IPI (Installer Provisioned)", "UPI (User Provisioned)", "Installation manuelle via PXE", "Ansible uniquement"],
+          "question": "Quel est le point d'entrée unique pour toutes les commandes (oc, console, API) sur le cluster ?",
+          "answers": ["Le site de Red Hat", "L'API Server", "Le terminal de l'ordinateur", "La base de données"],
           "solution": 1,
           "cooldown": 5,
           "time": 20
         },
         {
-          "question": "Quel contrôleur du plan de contrôle détecte qu'un nœud est tombé et doit reprogrammer les pods ?",
-          "answers": ["Deployment controller", "Node controller", "ReplicaSet controller", "Job controller"],
+          "question": "Quel est l'OS (système d'exploitation) spécialisé utilisé par les nœuds OpenShift ?",
+          "answers": ["Windows Server", "Red Hat Enterprise Linux CoreOS (RHCOS)", "Ubuntu", "macOS"],
           "solution": 1,
           "cooldown": 5,
           "time": 20
@@ -133,57 +133,57 @@ data:
       "subject": "Les Workloads dans OpenShift",
       "questions": [
         {
-          "question": "Pourquoi le cours déconseille-t-il de créer des pods nus (kind: Pod) en production ?",
-          "answers": ["Ils sont trop lents", "Ils ne sont pas recréés automatiquement en cas de panne", "Ils ne peuvent pas avoir d'IP", "Ils sont interdits par OpenShift"],
+          "question": "Quelle est l'unité de base dans Kubernetes qui contient vos conteneurs ?",
+          "answers": ["Une boîte", "Un Pod", "Un dossier", "Un processus"],
           "solution": 1,
           "cooldown": 5,
           "time": 20
         },
         {
-          "question": "Les DeploymentConfig sont dépréciés. Quel objet standard Kubernetes doit-on utiliser aujourd'hui ?",
-          "answers": ["StatefulSet", "Deployment", "ReplicaSet", "ReplicationController"],
+          "question": "Quel objet utilise-t-on pour déployer une application web simple (sans données locales) ?",
+          "answers": ["Un Deployment", "Un fichier ZIP", "Une disquette", "Un script"],
+          "solution": 0,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Si mon application a besoin de stocker des fichiers de manière permanente (base de données), j'utilise :",
+          "answers": ["Un Deployment", "Un StatefulSet", "Un Pod seul", "Rien"],
           "solution": 1,
           "cooldown": 5,
           "time": 20
         },
         {
-          "question": "Qu'est-ce qu'un contrôleur (controller) dans Kubernetes ?",
-          "answers": ["Un script de démarrage", "Une boucle de réconciliation (état réel vs état désiré)", "Un plugin réseau", "Le nom de l'API Server"],
+          "question": "Quel objet permet de s'assurer qu'un pod de surveillance tourne sur CHAQUE serveur du cluster ?",
+          "answers": ["Un Deployment", "Un DaemonSet", "Un CronJob", "Un Service"],
           "solution": 1,
           "cooldown": 5,
           "time": 20
         },
         {
-          "question": "Quelle est la question clé (citée dans le cours) pour choisir entre un Deployment et un StatefulSet ?",
-          "answers": ["L'application est-elle en Java ?", "L'application conserve-t-elle un état local (data) ?", "L'app a-t-elle plus de 3 réplicas ?", "L'app utilise-t-elle du HTTPS ?"],
+          "question": "Qu'est-ce que le nombre de 'réplicas' ?",
+          "answers": ["Le prix de l'application", "Le nombre d'exemplaires identiques de mon application qui tournent en même temps", "La version du code", "Le nom de l'utilisateur"],
           "solution": 1,
           "cooldown": 5,
           "time": 20
         },
         {
-          "question": "Quelle caractéristique est propre aux pods d'un StatefulSet ?",
-          "answers": ["Ils n'ont pas de nom", "Ils ont un nom stable (ex: pod-0) et un stockage (PVC) qui leur est attaché", "Ils redémarrent plus vite", "Ils ne peuvent pas être scalés"],
+          "question": "Est-il recommandé de créer des pods 'nus' (sans Deployment) en production ?",
+          "answers": ["Oui pour aller plus vite", "Non, car s'ils tombent, personne ne les redémarrera", "Oui c'est la norme", "Seulement pour les bases de données"],
           "solution": 1,
           "cooldown": 5,
           "time": 20
         },
         {
-          "question": "Quel workload est idéal pour déployer un agent de log ou de monitoring sur CHAQUE nœud du cluster ?",
-          "answers": ["Deployment", "DaemonSet", "StatefulSet", "Job"],
+          "question": "Si je me trompe dans une mise à jour, OpenShift permet de revenir à la version d'avant. C'est le :",
+          "answers": ["Formatage", "Rollback", "Suppression", "Restart"],
           "solution": 1,
           "cooldown": 5,
           "time": 20
         },
         {
-          "question": "Quel objet de niveau inférieur est créé par un Deployment pour gérer les réplicas ?",
-          "answers": ["PodDirect", "ReplicaSet", "ContainerInfo", "ServiceAccount"],
-          "solution": 1,
-          "cooldown": 5,
-          "time": 20
-        },
-        {
-          "question": "Quelle est la principale différence entre un ReplicaSet et l'ancien ReplicationController ?",
-          "answers": ["Le ReplicaSet est plus lent", "Le ReplicaSet supporte des sélecteurs plus flexibles (matchExpressions)", "Il n'y a aucune différence", "Le ReplicationController est plus récent"],
+          "question": "Comment appelle-t-on le mécanisme qui vérifie en permanence que l'état réel correspond à ce qu'on a demandé ?",
+          "answers": ["La surveillance humaine", "La boucle de réconciliation (contrôleur)", "L'antivirus", "Le pare-feu"],
           "solution": 1,
           "cooldown": 5,
           "time": 20
@@ -195,57 +195,57 @@ data:
       "subject": "Les réseaux dans OpenShift",
       "questions": [
         {
-          "question": "Comment communiquent entre eux les conteneurs situés dans un MÊME pod ?",
-          "answers": ["Via une IP externe", "Via localhost (ils partagent le même réseau)", "Ils ne peuvent pas communiquer", "Via un service dédié"],
+          "question": "Chaque pod dans OpenShift possède-t-il sa propre adresse IP ?",
+          "answers": ["Non, ils partagent tous la même", "Oui, chaque pod a une IP unique", "Seulement les pods admin", "Seulement si on paye"],
           "solution": 1,
           "cooldown": 5,
           "time": 20
         },
         {
-          "question": "Le cours dit que les IPs de pods sont éphémères. Quelle est la règle d'or ?",
-          "answers": ["Toujours utiliser l'IP directe", "Ne jamais coder en dur un IP de pod (utiliser un Service)", "Changer l'IP manuellement", "Utiliser des IPs fixes via annotation"],
-          "solution": 1,
-          "cooldown": 5,
-          "time": 20
-        },
-        {
-          "question": "Quel est le plugin réseau (CNI) par défaut dans les versions récentes d'OpenShift ?",
-          "answers": ["OpenShift SDN", "OVN-Kubernetes", "Calico", "Cilium"],
-          "solution": 1,
-          "cooldown": 5,
-          "time": 20
-        },
-        {
-          "question": "Quel opérateur OpenShift déploie et configure le réseau (CNI) sur les nœuds ?",
-          "answers": ["Cluster Network Operator (CNO)", "Machine Config Operator", "Cloud Operator", "Ingress Operator"],
+          "question": "Quel objet fournit une adresse FIXE pour accéder à un groupe de pods (même s'ils redémarrent) ?",
+          "answers": ["Un Service", "Un post-it", "Une Route", "Un câble"],
           "solution": 0,
           "cooldown": 5,
           "time": 20
         },
         {
-          "question": "Comment les pods communiquent-ils entre eux s'ils sont sur des nœuds différents ?",
-          "answers": ["Via Internet", "Via un tunnel (VXLAN ou Geneve) créé par le SDN", "Via un câble physique direct", "Via SSH"],
+          "question": "Comment rend-on une application accessible depuis INTERNET pour les utilisateurs ?",
+          "answers": ["En ouvrant le serveur", "Via une Route (ou Ingress)", "En envoyant un mail", "Ce n'est pas possible"],
           "solution": 1,
           "cooldown": 5,
           "time": 20
         },
         {
-          "question": "À quoi servent les NetworkPolicies dans OpenShift ?",
-          "answers": ["À accélérer le réseau", "À isoler et contrôler les flux entre les pods (Ingress/Egress)", "À donner des noms aux pods", "À configurer le Wi-Fi"],
+          "question": "D'après le cours, doit-on configurer une application en utilisant l'IP directe d'un pod ?",
+          "answers": ["Oui c'est plus rapide", "Non, car l'IP change si le pod redémarre (utiliser le nom du Service)", "Oui c'est obligatoire", "Seulement en développement"],
           "solution": 1,
           "cooldown": 5,
           "time": 20
         },
         {
-          "question": "Sans SDN (réseau virtuel), quel serait le problème majeur ?",
-          "answers": ["On ne pourrait pas créer de pods", "Les pods sur différents nœuds ne pourraient pas se parler sans NAT complexe", "Le cluster serait trop rapide", "Les secrets ne seraient pas chiffrés"],
+          "question": "Quel objet permet d'interdire ou de filtrer les communications entre certains pods ?",
+          "answers": ["Un antivol", "Une NetworkPolicy (politique réseau)", "Un mot de passe", "Une Route"],
           "solution": 1,
           "cooldown": 5,
           "time": 20
         },
         {
-          "question": "Laquelle de ces commandes permet de voir la configuration du réseau du cluster ?",
-          "answers": ["oc get pods", "oc get network.operator cluster -o yaml", "oc get nodes", "oc debug node"],
+          "question": "Comment appelle-t-on le réseau 'virtuel' qui relie tous les pods entre eux ?",
+          "answers": ["L'Internet public", "Le SDN (Software Defined Network)", "Le Wi-Fi du cluster", "Le réseau en cuivre"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Par défaut, les pods d'un même cluster peuvent-ils se parler entre eux ?",
+          "answers": ["Non, tout est bloqué", "Oui, le réseau est ouvert par défaut entre les pods", "Seulement s'ils sont sur le même serveur", "Seulement via HTTPS"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Quel composant gère les règles réseau et le trafic sur les nœuds ?",
+          "answers": ["Le navigateur", "Le plugin réseau (ex: OVN-Kubernetes)", "La carte graphique", "Le clavier"],
           "solution": 1,
           "cooldown": 5,
           "time": 20
@@ -257,57 +257,57 @@ data:
       "subject": "Gestion et administration du cluster",
       "questions": [
         {
-          "question": "Quand est-il recommandé de supprimer le compte temporaire 'kubeadmin' ?",
-          "answers": ["Dès qu'on a un IdP (ex: htpasswd) et au moins un cluster-admin", "Jamais, c'est indispensable", "Après 10 minutes", "Seulement si on pirate le cluster"],
+          "question": "Quel rôle donne tous les droits (super-admin) sur l'ensemble du cluster ?",
+          "answers": ["view", "cluster-admin", "edit", "basic-user"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Qu'est-ce qu'un Namespace (ou Projet) dans OpenShift ?",
+          "answers": ["Un nom d'ordinateur", "Un espace isolé pour ranger les ressources d'une application ou d'une équipe", "Un mot de passe", "Un type de serveur"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Quelle commande utilise-t-on dans le terminal pour piloter OpenShift ?",
+          "answers": ["ls", "oc", "cd", "cmd"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Comment appelle-t-on le mécanisme qui associe un utilisateur à des droits spécifiques ?",
+          "answers": ["Un RoleBinding", "Un mot de passe", "Un identifiant", "Une signature"],
           "solution": 0,
           "cooldown": 5,
           "time": 20
         },
         {
-          "question": "Quelle commande permet de créer un fichier htpasswd avec le PREMIER utilisateur ?",
-          "answers": ["htpasswd -B user pass", "htpasswd -c -B -b /tmp/htpasswd user pass", "oc create htpasswd", "openssl htpasswd"],
+          "question": "Où peut-on voir graphiquement l'état de santé et la consommation du cluster ?",
+          "answers": ["Sur YouTube", "Dans la console web OpenShift (section Monitoring)", "Dans un e-mail hebdomadaire", "Sur l'écran du serveur"],
           "solution": 1,
           "cooldown": 5,
           "time": 20
         },
         {
-          "question": "Un RoleBinding qui pointe vers un ClusterRole donne des droits dans quel périmètre ?",
-          "answers": ["Tout le cluster", "Uniquement dans son propre namespace", "Tous les namespaces sauf un", "Aucun droit"],
+          "question": "D'après le cours, le compte 'kubeadmin' doit-il être conservé pour toujours ?",
+          "answers": ["Oui", "Non, il faut le supprimer après avoir créé un vrai compte administrateur sécurisé", "Seulement si on a plus de 3 nœuds", "Oui, Red Hat l'oblige"],
           "solution": 1,
           "cooldown": 5,
           "time": 20
         },
         {
-          "question": "Quel opérateur gère Prometheus, Alertmanager et Grafana sur OpenShift ?",
-          "answers": ["Machine Config Operator", "Cluster Monitoring Operator", "Cluster Version Operator", "Storage Operator"],
+          "question": "Un rôle de type 'edit' permet-il de supprimer le cluster entier ?",
+          "answers": ["Oui", "Non, il permet de modifier les applications mais pas de détruire le cluster", "Seulement s'il n'y a personne d'autre", "Oui, le dimanche"],
           "solution": 1,
           "cooldown": 5,
           "time": 20
         },
         {
-          "question": "Quel type d'utilisateur est une identité d'application (comme system:serviceaccount...) ?",
-          "answers": ["Utilisateur standard", "Compte de service (ServiceAccount)", "Utilisateur système", "Invité"],
-          "solution": 1,
-          "cooldown": 5,
-          "time": 20
-        },
-        {
-          "question": "Comment supprime-t-on proprement le secret kubeadmin du cluster ?",
-          "answers": ["oc delete user kubeadmin", "oc delete secret kubeadmin -n kube-system", "oc patch oauth", "Plus besoin de le supprimer"],
-          "solution": 1,
-          "cooldown": 5,
-          "time": 20
-        },
-        {
-          "question": "Quelle ressource regroupe les nœuds (ex: master, worker) pour appliquer une configuration commune ?",
-          "answers": ["MachineSet", "MachineConfigPool (MCP)", "NodeSelector", "Ingress"],
-          "solution": 1,
-          "cooldown": 5,
-          "time": 20
-        },
-        {
-          "question": "Pourquoi utiliser un ClusterRole avec un simple RoleBinding ?",
-          "answers": ["C'est impossible", "Pour réutiliser un rôle commun tout en limitant l'accès au namespace local", "Pour devenir admin du cluster", "Pour contourner le parfeu"],
+          "question": "Que permet de faire la section 'User Management' de la console ?",
+          "answers": ["Changer de fond d'écran", "Gérer les utilisateurs, les groupes et leurs droits", "Éteindre les serveurs", "Jouer à des jeux"],
           "solution": 1,
           "cooldown": 5,
           "time": 20
