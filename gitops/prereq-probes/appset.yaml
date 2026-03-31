@@ -17,41 +17,6 @@ spec:
       - city: berlin
       - city: nairobi
       - city: madrid
-      - city: toronto
-      - city: singapour
-      - city: stockholm
-      - city: athenes
-      - city: varsovie
-      - city: oslo
-      - city: helsinki
-      - city: lisbonne
-      - city: vienne
-      - city: brasilia
-      - city: canberra
-      - city: ottawa
-      - city: seoul
-      - city: cap
-      - city: budapest
-      - city: dublin
-      - city: zurich
-      - city: cardiff
-      - city: nicosie
-      - city: sofia
-      - city: suva
-      - city: riga
-      - city: vilnius
-      - city: alger
-      - city: abou-dabi
-      - city: bagdad
-      - city: bangkok
-      - city: le-caire
-      - city: freetown
-      - city: kaboul
-      - city: kinshasa
-      - city: libreville
-      - city: mexico
-      - city: reykjavik
-      - city: prague
   template:
     metadata:
       name: 'prereq-probes-{{city}}'
@@ -66,7 +31,7 @@ spec:
         namespace: '{{city}}-user-ns'
       syncPolicy:
         automated:
-          prune: false
+          prune: true
           selfHeal: true
         syncOptions:
           - CreateNamespace=false
