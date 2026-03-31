@@ -21,9 +21,9 @@ openshift:
   namespace:
     quota:
       requestsCpu: "500m"
-      requestsMemory: "768Mi"
+      requestsMemory: "1Gi"
       limitsCpu: "2"
-      limitsMemory: "1500Mi"
+      limitsMemory: "2Gi"
       pods: "15"
       services: "10"
       persistentvolumeclaims: "5"
