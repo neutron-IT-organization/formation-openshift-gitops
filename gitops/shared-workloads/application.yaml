@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: shared-workloads
+  namespace: openshift-gitops
+spec:
+  project: formation-openshift
+  source:
+    repoURL: https://github.com/neutron-IT-organization/formation-openshift-gitops.git
+    targetRevision: main
+    path: gitops/shared-workloads/base
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: shared-workloads
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=false

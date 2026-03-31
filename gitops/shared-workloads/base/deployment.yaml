@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shared-app
+  namespace: shared-workloads
+  labels:
+    app: shared-app
+    app.kubernetes.io/instance: shared-workloads
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shared-app
+  template:
+    metadata:
+      labels:
+        app: shared-app
+    spec:
+      containers:
+      - name: quarkus-container
+        image: registry.access.redhat.com/ubi8/ubi:latest
+        command:
+        - /bin/bash
+        args:
+        - -c
+        - echo hello from neutron IT; while true; do sleep 10; done
+        resources:
+          requests:
+            cpu: 1m
+            memory: 16Mi
+          limits:
+            cpu: 50m
+            memory: 64Mi
