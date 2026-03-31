@@ -16,13 +16,15 @@ openshift:
   - madrid
 
   # Quotas appliqués à chaque namespace étudiant
+  # Le terminal web OpenShift nécessite : requests.cpu=200m, limits.cpu=800m,
+  # requests.memory=256Mi, limits.memory=640Mi — les quotas doivent l'accommoder.
   namespace:
     quota:
-      requestsCpu: "0.1"
-      requestsMemory: "256Mi"
-      limitsCpu: "0.3"
-      limitsMemory: "512Mi"
-      pods: "10"
+      requestsCpu: "500m"
+      requestsMemory: "768Mi"
+      limitsCpu: "2"
+      limitsMemory: "1500Mi"
+      pods: "15"
       services: "10"
       persistentvolumeclaims: "5"
       requestsStorage: "10Gi"
