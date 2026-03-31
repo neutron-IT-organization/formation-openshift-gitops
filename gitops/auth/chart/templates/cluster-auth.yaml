@@ -159,4 +159,22 @@ spec:
           network.openshift.io/policy-group: monitoring
   policyTypes:
   - Ingress
+---
+# NetworkPolicy: autoriser le DevWorkspace operator (health check du terminal web)
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-from-openshift-operators
+  namespace: {{ $namespace }}
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false
+spec:
+  podSelector: {}
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: openshift-operators
+  policyTypes:
+  - Ingress
 {{- end }}
