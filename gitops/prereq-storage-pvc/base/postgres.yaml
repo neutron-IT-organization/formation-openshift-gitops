@@ -40,11 +40,11 @@ spec:
                   key: POSTGRES_DB
           resources:
             requests:
-              cpu: "10m"
-              memory: "128Mi"
+              cpu: "1m"
+              memory: "32Mi"
             limits:
-              cpu: "100m"
-              memory: "128Mi"
+              cpu: "50m"
+              memory: "32Mi"
           volumeMounts:
             - name: postgres-storage
               mountPath: /var/lib/pgsql/data

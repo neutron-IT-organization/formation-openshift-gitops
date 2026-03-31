@@ -53,18 +53,18 @@ openshift:
   # Quotas appliqués à chaque namespace étudiant
   namespace:
     quota:
-      requestsCpu: "0.5"
-      requestsMemory: "1Gi"
-      limitsCpu: "1"
-      limitsMemory: "2Gi"
+      requestsCpu: "0.2"
+      requestsMemory: "512Mi"
+      limitsCpu: "0.5"
+      limitsMemory: "1Gi"
       pods: "10"
       services: "10"
       persistentvolumeclaims: "5"
       requestsStorage: "20Gi"
     limitrange:
-      defaultCpu: "100m"
-      defaultMemory: "128Mi"
-      defaultRequestCpu: "10m"
-      defaultRequestMemory: "32Mi"
+      defaultCpu: "50m"
+      defaultMemory: "64Mi"
+      defaultRequestCpu: "1m"
+      defaultRequestMemory: "16Mi"
       maxCpu: "2"
       maxMemory: "2Gi"
