@@ -27,7 +27,7 @@ openshift:
       pods: "15"
       services: "10"
       persistentvolumeclaims: "5"
-      requestsStorage: "10Gi"
+      requestsStorage: "15Gi"
     limitrange:
       defaultCpu: "20m"
       defaultMemory: "32Mi"
