@@ -1,14 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: olympic-medals-service
-  labels:
-    app: olympic-medals-app
+  name: welcome-svc
 spec:
   selector:
-    app: olympic-medals-app
+    app: welcome-app
   ports:
-    - name: http
-      port: 5000
-      targetPort: 5000
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
   type: ClusterIP

@@ -1,16 +1,13 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: olympic-medals-route
-  labels:
-    app: olympic-medals-app
+  name: welcome-route
 spec:
   to:
     kind: Service
-    name: olympic-medals-service
-    weight: 100
+    name: welcome-svc
   port:
-    targetPort: 5000
+    targetPort: 80
   tls:
     termination: edge
     insecureEdgeTerminationPolicy: Redirect
