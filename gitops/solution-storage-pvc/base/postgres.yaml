@@ -16,8 +16,7 @@ spec:
     spec:
       volumes:
         - name: postgres-storage
-          persistentVolumeClaim:
-            claimName: postgres-pvc
+          emptyDir: {}
       containers:
         - name: postgres
           image: registry.redhat.io/rhel8/postgresql-12:latest
