@@ -14,6 +14,20 @@ spec:
       labels:
         app: todo-app
     spec:
+      initContainers:
+        - name: wait-for-postgres
+          image: registry.access.redhat.com/ubi8/ubi:latest
+          command:
+            - bash
+            - -c
+            - until bash -c '</dev/tcp/postgres-service/5432' 2>/dev/null; do echo "Waiting for postgres..."; sleep 3; done
+          resources:
+            requests:
+              cpu: "1m"
+              memory: "16Mi"
+            limits:
+              cpu: "50m"
+              memory: "64Mi"
       containers:
         - name: todo-app
           image: quay.io/neutron-it/todoapp:v4
