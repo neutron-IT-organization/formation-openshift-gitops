@@ -245,6 +245,61 @@ data:
         }
       ]
     }
+  stockage-openshift.json: |
+    {
+      "subject": "Stockage persistant dans OpenShift",
+      "questions": [
+        {
+          "question": "Que se passe-t-il aux données d'un volume 'emptyDir' quand le pod est supprimé ?",
+          "answers": ["Elles sont sauvegardées dans etcd", "Elles sont définitivement perdues", "Elles sont migrées sur un autre nœud", "Elles sont compressées dans le registry"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Un PersistentVolumeClaim (PVC), c'est quoi ?",
+          "answers": ["Un disque physique attaché à un nœud", "Une demande de stockage persistant faite par une application", "Un volume temporaire créé dans un pod", "Un objet pour configurer les sauvegardes"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Qu'est-ce qu'un PersistentVolume (PV) ?",
+          "answers": ["L'espace de stockage réel provisionné par le cluster (côté admin)", "La demande de stockage faite par le développeur", "Un volume partagé entre tous les pods du namespace", "Un ConfigMap contenant les informations de stockage"],
+          "solution": 0,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Que signifie le statut 'Bound' sur un PVC ?",
+          "answers": ["Le PVC est en attente d'un PV disponible", "Le PVC est lié à un PV, le stockage est prêt à être utilisé", "Le PVC est en cours de suppression", "Le PVC a atteint sa capacité maximale"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Quel est le rôle d'une StorageClass ?",
+          "answers": ["Elle définit les droits d'accès aux volumes", "Elle décrit un type de stockage et permet la création automatique de PV (dynamic provisioning)", "Elle impose une limite de taille sur les PVC", "Elle remplace le PVC pour les StatefulSets"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Si on ne spécifie pas de storageClassName dans un PVC, que se passe-t-il ?",
+          "answers": ["La création du PVC échoue", "Le cluster utilise la StorageClass marquée comme 'default'", "Un emptyDir est utilisé à la place", "Le PVC reste en statut Pending indéfiniment"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Si un pod PostgreSQL utilisant un PVC est supprimé puis recréé, que se passe-t-il aux données ?",
+          "answers": ["Elles sont perdues, comme avec emptyDir", "Elles sont conservées, le nouveau pod retrouve le même PVC et les mêmes données", "Le PVC est automatiquement supprimé avec le pod", "Les données sont répliquées sur tous les nœuds"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 20
+        }
+      ]
+    }
   administration-openshift.json: |
     {
       "subject": "Gestion et administration du cluster",
