@@ -51,6 +51,36 @@ roleRef:
   kind: ClusterRole
   name: admin
 ---
+# Role: droits sur les ResourceQuotas (non inclus dans le rôle admin)
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: {{ $username }}-resourcequota-manager
+  namespace: {{ $namespace }}
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false
+rules:
+  - apiGroups: [""]
+    resources: ["resourcequotas"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+---
+# RoleBinding: associe le rôle resourcequota-manager à l'utilisateur
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ $username }}-resourcequota-manager
+  namespace: {{ $namespace }}
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false
+subjects:
+  - kind: User
+    name: {{ $username | quote }}
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: {{ $username }}-resourcequota-manager
+---
 # RoleBinding: accès en lecture au namespace partagé shared-workloads (exercice 2.2)
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
