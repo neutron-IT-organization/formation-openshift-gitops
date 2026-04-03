@@ -333,13 +333,6 @@ data:
           "time": 25
         },
         {
-          "question": "Un pod dont la liveness probe échoue, que fait OpenShift ?",
-          "answers": ["Il supprime le pod définitivement", "Il retire le pod du Service temporairement", "Il redémarre le conteneur", "Il migre le pod vers un autre nœud"],
-          "solution": 2,
-          "cooldown": 5,
-          "time": 20
-        },
-        {
           "question": "Quelle est la différence entre requests.cpu et limits.cpu ?",
           "answers": ["Ce sont deux noms pour la même chose", "requests est le minimum garanti (pour le scheduler), limits est le maximum autorisé", "limits est le minimum garanti, requests est le maximum autorisé", "requests s'applique au nœud, limits au pod"],
           "solution": 1,
@@ -352,13 +345,6 @@ data:
           "solution": 1,
           "cooldown": 5,
           "time": 25
-        },
-        {
-          "question": "Un Service Account est utilisé par quel type d'entité pour s'authentifier auprès de l'API OpenShift ?",
-          "answers": ["Un utilisateur humain", "Un groupe LDAP", "Une application ou un pod", "Un nœud du cluster"],
-          "solution": 2,
-          "cooldown": 5,
-          "time": 20
         },
         {
           "question": "Comment vérifier les droits d'un Service Account sans avoir à lancer un pod ?",
@@ -410,23 +396,9 @@ data:
           "time": 20
         },
         {
-          "question": "Une NetworkPolicy avec podSelector vide ({}) dans un namespace bloque tout le trafic entrant. Comment autoriser uniquement les pods du même namespace ?",
-          "answers": ["En ajoutant un ingress avec un namespaceSelector vide", "En supprimant la NetworkPolicy", "En ajoutant une règle ingress avec un podSelector vide", "En ajoutant un egress vers le namespace"],
-          "solution": 2,
-          "cooldown": 5,
-          "time": 30
-        },
-        {
           "question": "Un ResourceQuota avec requests.cpu=900m est atteint (3 pods × 300m). Que se passe-t-il si on scale à 4 réplicas ?",
           "answers": ["OpenShift réduit les requests du 4ème pod", "Le 4ème pod démarre avec 0m de CPU", "OpenShift refuse de créer le 4ème pod, le déploiement reste à 3/4", "OpenShift supprime un pod existant pour en créer un nouveau"],
           "solution": 2,
-          "cooldown": 5,
-          "time": 25
-        },
-        {
-          "question": "Dans OpenShift, comment une readiness probe est-elle différente d'une liveness probe ?",
-          "answers": ["La readiness redémarre le pod, la liveness le retire du Service", "La liveness redémarre le pod s'il est bloqué, la readiness retire le pod du Service s'il n'est pas prêt", "Il n'y a pas de différence, elles font la même chose", "La readiness s'applique au démarrage seulement, la liveness en continu"],
-          "solution": 1,
           "cooldown": 5,
           "time": 25
         },
