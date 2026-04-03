@@ -20,10 +20,10 @@ openshift:
   # requests.memory=256Mi, limits.memory=640Mi — les quotas doivent l'accommoder.
   namespace:
     quota:
-      requestsCpu: "2"
-      requestsMemory: "1Gi"
-      limitsCpu: "2"
-      limitsMemory: "2Gi"
+      requestsCpu: "4"
+      requestsMemory: "2Gi"
+      limitsCpu: "4"
+      limitsMemory: "4Gi"
       pods: "15"
       services: "10"
       persistentvolumeclaims: "5"
