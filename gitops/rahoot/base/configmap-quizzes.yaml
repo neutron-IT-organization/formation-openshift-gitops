@@ -300,6 +300,152 @@ data:
         }
       ]
     }
+  synthese-openshift.json: |
+    {
+      "subject": "Quiz de Synthèse — Formation OpenShift",
+      "questions": [
+        {
+          "question": "Un conteneur et une machine virtuelle partagent-ils tous les deux leur propre noyau OS ?",
+          "answers": ["Oui, les deux ont un noyau isolé", "Non, le conteneur partage le noyau de l'hôte, pas la VM", "Non, la VM partage le noyau de l'hôte, pas le conteneur", "Oui, mais seulement sur Linux"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 25
+        },
+        {
+          "question": "Quelle ressource Kubernetes fournit une adresse stable pour accéder à un groupe de pods qui peuvent changer d'IP ?",
+          "answers": ["Une Route", "Un Endpoint", "Un Service", "Un ConfigMap"],
+          "solution": 2,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Mon application de base de données doit conserver ses données même si le pod redémarre. Quel type de workload dois-je utiliser ?",
+          "answers": ["Deployment + emptyDir", "StatefulSet + PersistentVolume", "DaemonSet + hostPath", "ReplicaSet seul"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 25
+        },
+        {
+          "question": "Quelle est la différence entre un ConfigMap et un Secret ?",
+          "answers": ["Il n'y a aucune différence technique", "Le Secret chiffre les données au transit, le ConfigMap non", "Le Secret est fait pour les données sensibles (mots de passe, tokens), le ConfigMap pour la configuration non-sensible", "Le ConfigMap est namespace-scoped, le Secret est cluster-scoped"],
+          "solution": 2,
+          "cooldown": 5,
+          "time": 25
+        },
+        {
+          "question": "Un pod dont la liveness probe échoue, que fait OpenShift ?",
+          "answers": ["Il supprime le pod définitivement", "Il retire le pod du Service temporairement", "Il redémarre le conteneur", "Il migre le pod vers un autre nœud"],
+          "solution": 2,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Quelle est la différence entre requests.cpu et limits.cpu ?",
+          "answers": ["Ce sont deux noms pour la même chose", "requests est le minimum garanti (pour le scheduler), limits est le maximum autorisé", "limits est le minimum garanti, requests est le maximum autorisé", "requests s'applique au nœud, limits au pod"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 25
+        },
+        {
+          "question": "Un RoleBinding dans le namespace 'paris-user-ns' donne-t-il des droits dans le namespace 'tokyo-user-ns' ?",
+          "answers": ["Oui, si le rôle référencé est un ClusterRole", "Non, un RoleBinding est limité au namespace où il est créé", "Oui, si l'utilisateur est cluster-admin", "Non, sauf si on ajoute un ClusterRoleBinding en complément"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 25
+        },
+        {
+          "question": "Un Service Account est utilisé par quel type d'entité pour s'authentifier auprès de l'API OpenShift ?",
+          "answers": ["Un utilisateur humain", "Un groupe LDAP", "Une application ou un pod", "Un nœud du cluster"],
+          "solution": 2,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Comment vérifier les droits d'un Service Account sans avoir à lancer un pod ?",
+          "answers": ["oc describe serviceaccount", "oc auth can-i list pods --as=system:serviceaccount:ns:sa-name", "oc get rolebinding -o wide", "oc policy view sa-name"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 25
+        },
+        {
+          "question": "Quel objet impose automatiquement des valeurs par défaut de CPU/mémoire aux conteneurs qui n'en définissent pas ?",
+          "answers": ["ResourceQuota", "LimitRange", "PodDisruptionBudget", "HorizontalPodAutoscaler"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Une Route OpenShift expose une application en HTTP/HTTPS. À quel objet interne du cluster fait-elle référence ?",
+          "answers": ["Directement au pod", "À un Deployment", "À un Service", "À un Endpoint"],
+          "solution": 2,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Qu'arrive-t-il aux données d'un emptyDir quand le pod est supprimé ?",
+          "answers": ["Elles sont conservées sur le nœud pendant 24h", "Elles sont perdues définitivement", "Elles sont transférées au PVC par défaut", "Elles sont sauvegardées dans etcd"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Quel est le rôle du Horizontal Pod Autoscaler (HPA) ?",
+          "answers": ["Ajuster automatiquement les ressources CPU/mémoire d'un pod existant", "Créer ou supprimer des réplicas selon la charge (ex: CPU)", "Migrer les pods vers les nœuds les moins chargés", "Augmenter la taille des volumes PVC automatiquement"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 25
+        },
+        {
+          "question": "Quelle commande permet de revenir à la version précédente d'un déploiement ?",
+          "answers": ["oc restore deployment/mon-app", "oc revert deployment/mon-app", "oc rollout undo deployment/mon-app", "oc redeploy deployment/mon-app --previous"],
+          "solution": 2,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Je veux qu'un agent de monitoring tourne sur CHAQUE nœud du cluster, même les futurs. Quel objet utiliser ?",
+          "answers": ["Un Deployment avec replicas = nombre de nœuds", "Un StatefulSet avec antiAffinity", "Un DaemonSet", "Un CronJob avec schedule '*'"],
+          "solution": 2,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Une NetworkPolicy avec podSelector vide ({}) dans un namespace bloque tout le trafic entrant. Comment autoriser uniquement les pods du même namespace ?",
+          "answers": ["En ajoutant un ingress avec un namespaceSelector vide", "En supprimant la NetworkPolicy", "En ajoutant une règle ingress avec un podSelector vide", "En ajoutant un egress vers le namespace"],
+          "solution": 2,
+          "cooldown": 5,
+          "time": 30
+        },
+        {
+          "question": "Un ResourceQuota avec requests.cpu=900m est atteint (3 pods × 300m). Que se passe-t-il si on scale à 4 réplicas ?",
+          "answers": ["OpenShift réduit les requests du 4ème pod", "Le 4ème pod démarre avec 0m de CPU", "OpenShift refuse de créer le 4ème pod, le déploiement reste à 3/4", "OpenShift supprime un pod existant pour en créer un nouveau"],
+          "solution": 2,
+          "cooldown": 5,
+          "time": 25
+        },
+        {
+          "question": "Dans OpenShift, comment une readiness probe est-elle différente d'une liveness probe ?",
+          "answers": ["La readiness redémarre le pod, la liveness le retire du Service", "La liveness redémarre le pod s'il est bloqué, la readiness retire le pod du Service s'il n'est pas prêt", "Il n'y a pas de différence, elles font la même chose", "La readiness s'applique au démarrage seulement, la liveness en continu"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 25
+        },
+        {
+          "question": "Quel composant du Control Plane est responsable de surveiller l'état réel du cluster et de corriger les écarts avec l'état désiré ?",
+          "answers": ["Le scheduler", "L'API Server", "Le controller-manager", "Le kubelet"],
+          "solution": 2,
+          "cooldown": 5,
+          "time": 20
+        },
+        {
+          "question": "Quelle est la bonne pratique concernant l'utilisation du Service Account 'default' pour vos applications ?",
+          "answers": ["L'utiliser systématiquement car il a les droits nécessaires par défaut", "Créer un Service Account dédié avec uniquement les permissions nécessaires (moindre privilège)", "Lui donner le rôle cluster-admin pour éviter les problèmes de droits", "L'utiliser uniquement en développement, pas en production"],
+          "solution": 1,
+          "cooldown": 5,
+          "time": 25
+        }
+      ]
+    }
   administration-openshift.json: |
     {
       "subject": "Gestion et administration du cluster",
