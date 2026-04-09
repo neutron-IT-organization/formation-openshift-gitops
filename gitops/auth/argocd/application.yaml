@@ -7,7 +7,7 @@ spec:
   project: formation-openshift
   source:
     repoURL: https://github.com/neutron-IT-organization/formation-openshift-gitops.git
-    targetRevision: main
+    targetRevision: dev
     path: gitops/auth/chart
     helm:
       parameters:
