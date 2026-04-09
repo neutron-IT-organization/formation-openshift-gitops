@@ -24,7 +24,7 @@ spec:
       project: formation-openshift
       source:
         repoURL: https://github.com/neutron-IT-organization/formation-openshift-gitops.git
-        targetRevision: main
+        targetRevision: dev
         path: gitops/solution-services-routes/base
       destination:
         server: https://kubernetes.default.svc
